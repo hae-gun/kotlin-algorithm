@@ -25,12 +25,17 @@ class Solution_258712_programmers {
             .apply {
                 friends.forEach { this[it] = 0 }
             }
+
+        val giveAndTakeMap = gifts.groupingBy { it }.eachCount()
+
         for (i in friends.indices) {
             for (j in i + 1 until friends.size) {
                 val friend1 = friends[i]
                 val friend2 = friends[j]
-                val sentToFriend1 = gifts.count { it == "$friend2 $friend1" }
-                val sentToFriend2 = gifts.count { it == "$friend1 $friend2" }
+//                val sentToFriend1 = gifts.count { it == "$friend2 $friend1" }
+//                val sentToFriend2 = gifts.count { it == "$friend1 $friend2" }
+                val sentToFriend1= giveAndTakeMap["$friend1 $friend2"] ?: 0
+                val sentToFriend2 = giveAndTakeMap["$friend1 $friend2"] ?: 0
 
                 when {
                     sentToFriend1 > sentToFriend2 -> nextMonthGifts[friend2] = nextMonthGifts[friend2]!! + 1

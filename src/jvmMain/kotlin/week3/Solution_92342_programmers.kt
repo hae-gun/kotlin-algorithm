@@ -1,6 +1,6 @@
 package week3
 
-class Solution_92342_programmers {
+class Solution_92342_programmers { // https://school.programmers.co.kr/learn/courses/30/lessons/92342
     fun solution(n: Int, info: IntArray): IntArray {
         var maxDifference = 0
         var answer = IntArray(11) { -1 }
